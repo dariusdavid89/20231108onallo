@@ -29,4 +29,26 @@ interface Auto {
     
 }
 
+function legisebbCcm(autoTomb: Auto[]): Auto{
+
+    let legkisebb: Auto = autoTomb[0];
+    for(let i = 1; i < autoTomb.length; i++){
+        if(autoTomb[i].hengerurtartalom < legkisebb.hengerurtartalom){
+            legkisebb = autoTomb[i];
+        }
+    }
+    return legkisebb;
+}
+
+function benzinesDb(autoTomb: Auto[]): number{
+
+    let benzines: number = 0;
+    for(let i = 0; i < autoTomb.length; i++){
+        if(autoTomb[i].benzinesE){
+            benzines++
+        }
+    }
+    return benzines;
+}   
+
 //change 
