@@ -9,30 +9,84 @@ function korKeruletTerulet(sugar) {
     return [kerulet, terulet];
 }
 console.log(korKeruletTerulet(3));
-var auto1 = {
-    gyarto: "Ford",
-    tipus: "Mondeo",
-    hengerurtartalom: 1800,
-    benzinesE: true,
-};
-var auto2 = {
-    gyarto: "Mercedes",
-    tipus: "E-260",
-    hengerurtartalom: 2400,
-    benzinesE: false,
-};
-var auto3 = {
-    gyarto: "Seat",
-    tipus: "Cordoba",
-    hengerurtartalom: 1600,
-    benzinesE: true,
-};
-var auto4 = {
-    gyarto: "BMW",
-    tipus: "326",
-    hengerurtartalom: 2000,
-    benzinesE: true,
-};
-document.write(auto1);
-console.log(auto2);
-console.log(auto4);
+var autok = [
+    {
+        gyarto: "Mercedes",
+        tipus: "E260",
+        hengerurtartalom: 2000,
+        benzinesE: false,
+    },
+    {
+        gyarto: "Audi",
+        tipus: "A4",
+        hengerurtartalom: 1900,
+        benzinesE: false,
+    },
+    {
+        gyarto: "Ford",
+        tipus: "Mondeo",
+        hengerurtartalom: 1800,
+        benzinesE: true,
+    },
+    {
+        gyarto: "Honda",
+        tipus: "Civic",
+        hengerurtartalom: 1600,
+        benzinesE: true,
+    },
+    {
+        gyarto: "BMW",
+        tipus: "530",
+        hengerurtartalom: 2400,
+        benzinesE: true,
+    },
+    {
+        gyarto: "VolksWagen",
+        tipus: "Passat",
+        hengerurtartalom: 1900,
+        benzinesE: false,
+    },
+];
+function legisebbCcm(autoTomb) {
+    var legkisebb = autoTomb[0];
+    for (var i = 1; i < autoTomb.length; i++) {
+        if (autoTomb[i].hengerurtartalom < legkisebb.hengerurtartalom) {
+            legkisebb = autoTomb[i];
+        }
+    }
+    return legkisebb;
+}
+function benzinesDb(autoTomb) {
+    var benzines = 0;
+    for (var i = 0; i < autoTomb.length; i++) {
+        if (autoTomb[i].benzinesE) {
+            benzines++;
+        }
+    }
+    return benzines;
+}
+function atlagCcm(autoTomb) {
+    var ossz = 0;
+    for (var i = 0; i < autoTomb.length; i++) {
+        ossz += autoTomb[i].hengerurtartalom;
+    }
+    return ossz / autoTomb.length;
+}
+function vanENembenzinesAuto(autoTomb) {
+    return autoTomb.some(function (auto) { return !auto.benzinesE; });
+}
+function benzinNemBenzin(autoTomb) {
+    var benzines = [];
+    var nemBenzines = [];
+    for (var i = 0; i < autoTomb.length; i++) {
+        if (autoTomb[i].benzinesE)
+            benzines.push(autoTomb[i]);
+        else
+            nemBenzines.push(autoTomb[i]);
+    }
+    return { benzines: benzines, nemBenzines: nemBenzines };
+}
+console.log("atlag ", atlagCcm(autok));
+console.log("vanE ", vanENembenzinesAuto(autok));
+console.log("benzin ", benzinNemBenzin(autok));
+//change 
